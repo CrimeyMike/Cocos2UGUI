@@ -30,14 +30,28 @@ flowchart TD
 
 环境：Node.js ≥ 18、Unity 2022.3 LTS（含 UGUI）。
 
+**路径 A（推荐）：有 Cocos Creator 源工程**
+
 ```bash
-# 0) (可选) 微信小游戏 wxapkg 解包 → 得到 gamecaches 缓存目录
+# 1) 批量解析 + 映射（枚举 assets/**/*.prefab）
+node tools/batch-all.mjs --editor <cocos工程根>
+#    产物: ir/*.json (IR) + build/*.build.json (UGUI 契约)
+#    详见 docs/EDITOR-INPUT.md
+```
+
+**路径 B（补充）：只有成品包的逆向场景**
+
+```bash
+# 0) 微信小游戏 wxapkg 解包 → 得到 gamecaches 缓存目录
 node tools/unpack-wxapkg.mjs <wxapkg 目录或 .wxapkg> --appid wxXXXXXXXXXXXXXXXX
 
 # 1) 批量解析 + 映射（--gamecaches 指向缓存根目录）
 node tools/batch-all.mjs --gamecaches "<...>/usr/gamecaches"
-#    产物: ir/*.json (IR) + build/*.build.json (UGUI 契约)
+```
 
+**两条路径汇合，后续步骤完全一致：**
+
+```bash
 # 2) 命名规范化（幂等; 原名备份 build-raw/; 脚本信息落 sidecars/）
 node tools/normalize-names.mjs
 
@@ -58,7 +72,8 @@ Unity.exe -batchmode -quit -projectPath <工程> \
 ```
 ├── tools/                  # Node 工具链（零第三方依赖）
 │   ├── unpack-wxapkg.mjs   #   wxapkg 解密+解包（PBKDF2/AES/XOR, 密钥=AppID）
-│   ├── parse-prefab.mjs    #   压缩序列化 → IR
+│   ├── parse-editor-prefab.mjs #   编辑器 .prefab/.scene → IR（主路径）
+│   ├── parse-prefab.mjs    #   压缩序列化 → IR（解包补充路径）
 │   ├── batch-all.mjs       #   批量驱动（枚举全部 cc.Prefab）
 │   ├── map-to-ugui.mjs     #   IR → build.json（UGUI 契约）
 │   ├── normalize-names.mjs #   命名规范化（P3.5）
@@ -70,7 +85,10 @@ Unity.exe -batchmode -quit -projectPath <工程> \
 │   ├── MAPPING-RULES.md    #   Cocos→UGUI 逐规则实证（Widget 位表/y轴/capInsets…）
 │   ├── NAMING-SPEC.md      #   命名规范与源标记映射表
 │   └── PIPELINE-FLOW.md    #   流水线全景图
-├── tests/map-tests/        # golden 单测（synthetic 基线内置; 面板级回归需自备数据）
+├── tests/
+│   ├── editor-tests.mjs    #   编辑器入口全链路 golden（11 项, 含 plist 图集/rotated）
+│   ├── editor-fixture/     #   合成 Cocos 工程 fixture（零外部依赖）
+│   └── map-tests/          #   映射层 golden（synthetic 基线内置; 面板级回归需自备数据）
 └── unity/                  # Unity 侧接入（Editor 脚本 + 合成样例）
 ```
 

@@ -1,0 +1,68 @@
+{
+ "ver": "2.1.0",
+ "importer": "sprite-atlas",
+ "imported": true,
+ "uuid": "99999999-8888-7777-6666-555555555555",
+ "files": [
+  ".json"
+ ],
+ "subMetas": {
+  "aaa01": {
+   "ver": "1.0.12",
+   "importer": "sprite-frame",
+   "uuid": "99999999-8888-7777-6666-555555555555@aaa01",
+   "imported": true,
+   "files": [
+    ".json"
+   ],
+   "subMetas": {},
+   "displayName": "frame_a.png",
+   "id": "aaa01",
+   "name": "frame_a",
+   "userData": {
+    "rotated": false,
+    "offsetX": 0,
+    "offsetY": 0,
+    "trimX": 0,
+    "trimY": 0,
+    "width": 79,
+    "height": 80,
+    "rawWidth": 79,
+    "rawHeight": 80,
+    "borderTop": 12,
+    "borderBottom": 12,
+    "borderLeft": 12,
+    "borderRight": 12
+   }
+  },
+  "aaa02": {
+   "ver": "1.0.12",
+   "importer": "sprite-frame",
+   "uuid": "99999999-8888-7777-6666-555555555555@aaa02",
+   "imported": true,
+   "files": [
+    ".json"
+   ],
+   "subMetas": {},
+   "displayName": "frame_b.png",
+   "id": "aaa02",
+   "name": "frame_b",
+   "userData": {
+    "rotated": true,
+    "offsetX": 0,
+    "offsetY": 0,
+    "trimX": 0,
+    "trimY": 0,
+    "width": 30,
+    "height": 40,
+    "rawWidth": 30,
+    "rawHeight": 40,
+    "borderTop": 0,
+    "borderBottom": 0,
+    "borderLeft": 0,
+    "borderRight": 0
+   }
+  }
+ },
+ "userData": {}
+}

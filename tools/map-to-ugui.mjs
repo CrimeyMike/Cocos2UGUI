@@ -360,10 +360,9 @@ function mapComponents(node, nodePath, ctx) {
       }
       case 'cc.ScrollView': {
         cov('cc.ScrollView', 'mapped', name);
-        // _content 是 $inst(指向原始 section 实例表, IR 未携带)。
-        // 结构推断: ScrollView 节点子树中第一个带 Layout 的节点即滚动 content
-        // (Cocos 模板惯例; 本样例唯一子节点 view 带 Layout CONTAINER, 实证吻合)。
-        let contentName = findScrollContent(node);
+        // 优先: 编辑器入口(parse-editor-prefab.mjs)可直接解析 _content 引用为精确节点名;
+        // 解包入口($inst 不可解析)走结构推断: 子树 BFS 第一个带 Layout 的节点(Cocos 模板惯例)。
+        let contentName = p._content && p._content.resolvedNodeName ? p._content.resolvedNodeName : findScrollContent(node);
         if (!contentName) noteUnmapped(name, 'cc.ScrollView._content', '$inst 实例引用无法从 IR 解析且无带 Layout 的子节点, content 留空');
         out.push({
           type: 'ScrollRect',

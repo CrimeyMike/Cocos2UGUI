@@ -22,8 +22,9 @@ const GC_DEFAULT = null;
 
 const args = process.argv.slice(2);
 const argOf = (k) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null; };
-const gcRoot = argOf('--gamecaches') ?? process.env.C2U_GAMECACHES ?? GC_DEFAULT;
+const gcRoot = editorRoot ? null : (argOf('--gamecaches') ?? process.env.C2U_GAMECACHES ?? GC_DEFAULT);
 const onlyBundle = argOf('--only');
+const editorRoot = argOf('--editor');   // 编辑器工程根(提供后走原生 .prefab 枚举, gamecaches 参数忽略)
 const limit = argOf('--limit') ? parseInt(argOf('--limit'), 10) : Infinity;
 const force = args.includes('--force');
 
@@ -33,16 +34,31 @@ const BUILD_DIR = path.join(here, 'build');
 fs.mkdirSync(IR_DIR, { recursive: true });
 fs.mkdirSync(BUILD_DIR, { recursive: true });
 
-if (!gcRoot) {
-  console.error('缺少 --gamecaches <目录> 参数(或环境变量 C2U_GAMECACHES)。指向微信小游戏的 gamecaches 缓存根目录。');
-  process.exit(2);
-}
-
 const safeName = (s) => String(s).replace(/[^0-9A-Za-z_.-]+/g, '_').replace(/^_+|_+$/g, '') || 'unnamed';
 
 // ---------- 1. 枚举 prefab ----------
-const gc = new GameCaches(gcRoot);
 const prefabs = [];
+if (editorRoot) {
+  // 编辑器模式: 枚举 <project>/assets/**/*.prefab（.meta 的 Library 缓存目录自动跳过）
+  const walk = (dir, depth) => {
+    if (depth > 12) return;
+    let entries;
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
+    for (const e of entries) {
+      if (e.name.startsWith('.')) continue;
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) { if (e.name !== 'Library' && e.name !== 'temp') walk(full, depth + 1); }
+      else if (/\.prefab$/i.test(e.name)) {
+        const rel = path.relative(path.join(editorRoot, 'assets'), full).split(path.sep).join('/');
+        const bundle = rel.includes('/') ? rel.split('/')[0] : 'assets';
+        prefabs.push({ bundle, uuid: rel, name: safeName(path.basename(e.name, '.prefab')), file: full, section: 0, editor: true });
+      }
+    }
+  };
+  walk(path.join(editorRoot, 'assets'), 0);
+  console.log(`枚举完成: ${prefabs.length} 个 prefab（编辑器工程=${editorRoot}）`);
+} else {
+const gc = new GameCaches(gcRoot);
 const seenUuid = new Set();  // 同一 uuid 可能在多个 bundle 的 config 各登记一次（共享资产缓存副本），只取首个
 for (const bn of gc.bundleNames()) {
   if (onlyBundle && bn !== onlyBundle) continue;
@@ -63,6 +79,7 @@ for (const bn of gc.bundleNames()) {
   }
 }
 console.log(`枚举完成: ${prefabs.length} 个唯一 prefab（gamecaches=${gcRoot}）`);
+}
 
 // ---------- 2. 逐个 P1 + P3 ----------
 const results = [];
@@ -83,9 +100,13 @@ for (const p of prefabs) {
   }
 
   // P1 解析
-  const r1 = spawnSync(process.execPath, [path.join(here, 'parse-prefab.mjs'), p.file,
-    '--section', String(p.section), '--gamecaches', gcRoot, '--bundle', p.bundle, '--out', irPath],
-    { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
+  const r1 = p.editor
+    ? spawnSync(process.execPath, [path.join(here, 'parse-editor-prefab.mjs'), p.file,
+        '--project', editorRoot, '--bundle', p.bundle, '--out', irPath],
+        { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 })
+    : spawnSync(process.execPath, [path.join(here, 'parse-prefab.mjs'), p.file,
+        '--section', String(p.section), '--gamecaches', gcRoot, '--bundle', p.bundle, '--out', irPath],
+        { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
   if (r1.status !== 0) {
     row.status = 'parse-fail';
     row.error = (r1.stderr || r1.stdout || '').split('\n').filter(Boolean).slice(-3).join(' | ');

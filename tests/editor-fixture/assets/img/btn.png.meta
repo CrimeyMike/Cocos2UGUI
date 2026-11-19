@@ -1,0 +1,66 @@
+{
+ "ver": "1.1.0",
+ "importer": "image",
+ "imported": true,
+ "uuid": "66666666-7777-8888-9999-aaaaaaaaaaaa",
+ "files": [
+  ".json"
+ ],
+ "subMetas": {
+  "6c48a": {
+   "importer": "texture",
+   "uuid": "66666666-7777-8888-9999-aaaaaaaaaaaa@6c48a",
+   "displayName": "btn",
+   "id": "6c48a",
+   "name": "texture",
+   "ver": "1.0.22",
+   "imported": true,
+   "files": [
+    ".json"
+   ],
+   "subMetas": {},
+   "userData": {}
+  },
+  "f9941": {
+   "ver": "1.0.12",
+   "importer": "sprite-frame",
+   "uuid": "66666666-7777-8888-9999-aaaaaaaaaaaa@f9941",
+   "imported": true,
+   "files": [
+    ".json"
+   ],
+   "subMetas": {},
+   "displayName": "btn",
+   "id": "f9941",
+   "name": "spriteFrame",
+   "userData": {
+    "trimType": "auto",
+    "trimThreshold": 1,
+    "rotated": false,
+    "offsetX": 0,
+    "offsetY": 0,
+    "trimX": 0,
+    "trimY": 0,
+    "width": 80,
+    "height": 80,
+    "rawWidth": 80,
+    "rawHeight": 80,
+    "borderTop": 0,
+    "borderBottom": 0,
+    "borderLeft": 0,
+    "borderRight": 0,
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivotX": 0.5,
+    "pivotY": 0.5,
+    "meshType": 0,
+    "vertices": {}
+   }
+  }
+ },
+ "userData": {
+  "type": "sprite-frame",
+  "fixAlphaTransparencyArtifacts": false,
+  "redirect": ""
+ }
+}

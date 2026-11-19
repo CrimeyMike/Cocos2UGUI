@@ -2,9 +2,14 @@
 
 ```mermaid
 flowchart TD
-    SRC["📦 源数据（只读）<br/>微信 wxapkg 解包 + CDN 热更缓存<br/>gamecaches/ 448 个 prefab"] --> P1
+    SRC1["🟢 编辑器工程源文件<br/>.prefab/.scene + meta/plist"] --> P1E
+    subgraph P1E["P1 编辑器入口 · parse-editor-prefab.mjs"]
+        A0["__id__ 引用式反序列化<br/>meta/plist 切图解析 · ScrollView._content 精确解析"]
+    end
+    P1E -->|"ir/ (同一契约)"| P3
 
-    subgraph P1["P1 解析层 · parse-prefab.mjs"]
+    SRC2["🔵 解包缓存（只读）<br/>wxapkg 解包 / 游戏缓存 import JSON"] --> P1
+    subgraph P1["P1 解包入口 · parse-prefab.mjs"]
         A1["压缩序列化反序列化<br/>嵌套 prefab 展开 · 资产引用落地"]
     end
     P1 -->|"ir-all/ (IR 中间表示)"| P3
@@ -40,7 +45,8 @@ flowchart TD
 
 | 步骤 | 命令 | 耗时 |
 |------|------|------|
-| P1+P3 | `node batch-all.mjs` | 98 s |
+| P1+P3（编辑器工程） | `node batch-all.mjs --editor <工程根>` | 按规模 |
+| P1+P3（解包缓存） | `node batch-all.mjs --gamecaches <dir>` | 98 s |
 | P3.5 | `node normalize-names.mjs` | < 5 s |
 | P4 构建 | `Unity -executeMethod Cocos2UguiBuilder.BuildAll -stripScripts` | ~60 s |
 | P4 验证 | `Unity -executeMethod PrefabVerifier.VerifyAll -stripScripts` | ~30 s |
