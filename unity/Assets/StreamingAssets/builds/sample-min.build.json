@@ -1,0 +1,492 @@
+{
+ "meta": {
+  "panel": "sample-min",
+  "bundle": "sample",
+  "designResolution": {
+   "width": 750,
+   "height": 1334
+  },
+  "match": 1,
+  "generatedBy": "handwritten-sample-v1",
+  "flags": [
+   "sample",
+   "no-spine-runtime"
+  ]
+ },
+ "sprites": [
+  {
+   "name": "bg_full",
+   "source": "sprites/bg_ty.png",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 256,
+    "h": 240
+   },
+   "rotated": false,
+   "border": null
+  },
+  {
+   "name": "bg_sub",
+   "source": "sprites/bg_ty.png",
+   "rect": {
+    "x": 10,
+    "y": 20,
+    "w": 100,
+    "h": 80
+   },
+   "rotated": false,
+   "border": null
+  },
+  {
+   "name": "btn_bg",
+   "source": "sprites/btn_di.png",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 79,
+    "h": 80
+   },
+   "rotated": false,
+   "border": [
+    20,
+    20,
+    20,
+    20
+   ]
+  },
+  {
+   "name": "rot_icon",
+   "source": "sprites/btn_di.png",
+   "rect": {
+    "x": 5,
+    "y": 5,
+    "w": 40,
+    "h": 40
+   },
+   "rotated": true,
+   "border": null
+  },
+  {
+   "name": "title_bg",
+   "source": "sprites/title_bg.png",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 120,
+    "h": 40
+   },
+   "rotated": false,
+   "border": [
+    12,
+    12,
+    12,
+    12
+   ]
+  }
+ ],
+ "scripts": [
+  {
+   "uuidHash": "c2uSample01Hash",
+   "className": "SamplePanel_c2uSam",
+   "fields": [
+    {
+     "name": "titleLabel",
+     "cocosType": "cc.Label",
+     "tooltip": "标题文本"
+    },
+    {
+     "name": "closeButton",
+     "cocosType": "cc.Button",
+     "tooltip": "关闭按钮"
+    },
+    {
+     "name": "rewardItemPrefab",
+     "cocosType": "cc.Prefab",
+     "tooltip": "奖励项预制体"
+    }
+   ]
+  }
+ ],
+ "root": {
+  "name": "sample_min_root",
+  "active": true,
+  "rect": {
+   "anchorMin": [
+    0.5,
+    0.5
+   ],
+   "anchorMax": [
+    0.5,
+    0.5
+   ],
+   "offsetMin": [
+    -375,
+    -667
+   ],
+   "offsetMax": [
+    375,
+    667
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "anchoredPosition": [
+    0,
+    0
+   ],
+   "sizeDelta": [
+    750,
+    1334
+   ],
+   "rotationZ": 0,
+   "scale": [
+    1,
+    1,
+    1
+   ]
+  },
+  "components": [
+   {
+    "type": "Image",
+    "props": {
+     "sprite": "bg_full",
+     "imageType": "Simple",
+     "color": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "raycastTarget": true
+    }
+   }
+  ],
+  "children": [
+   {
+    "name": "header_bg",
+    "active": true,
+    "rect": {
+     "anchorMin": [
+      0.5,
+      1
+     ],
+     "anchorMax": [
+      0.5,
+      1
+     ],
+     "offsetMin": [
+      -200,
+      -80
+     ],
+     "offsetMax": [
+      200,
+      -30
+     ],
+     "pivot": [
+      0.5,
+      1
+     ],
+     "anchoredPosition": [
+      0,
+      -30
+     ],
+     "sizeDelta": [
+      400,
+      50
+     ],
+     "rotationZ": 0,
+     "scale": [
+      1,
+      1,
+      1
+     ]
+    },
+    "components": [
+     {
+      "type": "Image",
+      "props": {
+       "sprite": "title_bg",
+       "imageType": "Sliced",
+       "color": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "raycastTarget": true
+      }
+     }
+    ],
+    "children": []
+   },
+   {
+    "name": "header",
+    "active": true,
+    "rect": {
+     "anchorMin": [
+      0.5,
+      1
+     ],
+     "anchorMax": [
+      0.5,
+      1
+     ],
+     "offsetMin": [
+      -200,
+      -80
+     ],
+     "offsetMax": [
+      200,
+      -30
+     ],
+     "pivot": [
+      0.5,
+      1
+     ],
+     "anchoredPosition": [
+      0,
+      -30
+     ],
+     "sizeDelta": [
+      400,
+      50
+     ],
+     "rotationZ": 0,
+     "scale": [
+      1,
+      1,
+      1
+     ]
+    },
+    "components": [
+     {
+      "type": "Text",
+      "props": {
+       "text": "示例面板 Sample Panel",
+       "fontSize": 34,
+       "color": [
+        1,
+        0.95,
+        0.8,
+        1
+       ],
+       "alignment": "UpperCenter",
+       "overflow": "Overflow",
+       "lineSpacing": 1.2,
+       "richText": true
+      }
+     }
+    ],
+    "children": []
+   },
+   {
+    "name": "btn_close",
+    "active": true,
+    "rect": {
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "offsetMin": [
+      -100,
+      -145
+     ],
+     "offsetMax": [
+      100,
+      -55
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ],
+     "anchoredPosition": [
+      0,
+      -100
+     ],
+     "sizeDelta": [
+      200,
+      90
+     ],
+     "rotationZ": 0,
+     "scale": [
+      1,
+      1,
+      1
+     ]
+    },
+    "components": [
+     {
+      "type": "Image",
+      "props": {
+       "sprite": "btn_bg",
+       "imageType": "Sliced",
+       "color": [
+        0.95,
+        0.95,
+        0.95,
+        1
+       ],
+       "raycastTarget": true
+      }
+     },
+     {
+      "type": "Button",
+      "props": {
+       "interactable": true,
+       "transition": "ColorTint"
+      }
+     }
+    ],
+    "children": []
+   },
+   {
+    "name": "icon_rot",
+    "active": true,
+    "rect": {
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "offsetMin": [
+      105,
+      -255
+     ],
+     "offsetMax": [
+      175,
+      -185
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ],
+     "anchoredPosition": [
+      140,
+      -220
+     ],
+     "sizeDelta": [
+      70,
+      70
+     ],
+     "rotationZ": 15,
+     "scale": [
+      1.2,
+      1.2,
+      1
+     ]
+    },
+    "components": [
+     {
+      "type": "Image",
+      "props": {
+       "sprite": "rot_icon",
+       "imageType": "Simple",
+       "color": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "raycastTarget": true
+      }
+     },
+     {
+      "type": "Marker",
+      "props": {
+       "reason": "rotated sprite: 图集内旋转切图，Unity 不支持原位旋转，占位用整图",
+       "source": "sprites/rot_icon (rotated=true)"
+      }
+     }
+    ],
+    "children": []
+   },
+   {
+    "name": "script_host",
+    "active": true,
+    "rect": {
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "offsetMin": [
+      -240,
+      -280
+     ],
+     "offsetMax": [
+      -40,
+      -160
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ],
+     "anchoredPosition": [
+      -140,
+      -220
+     ],
+     "sizeDelta": [
+      200,
+      120
+     ],
+     "rotationZ": 0,
+     "scale": [
+      1,
+      1,
+      1
+     ]
+    },
+    "components": [
+     {
+      "type": "CustomScript",
+      "props": {
+       "script": "c2uSample01Hash"
+      }
+     },
+     {
+      "type": "CanvasGroup",
+      "props": {
+       "alpha": 0.8,
+       "blocksRaycasts": true
+      }
+     },
+     {
+      "type": "Layout",
+      "props": {
+       "layoutType": "Vertical",
+       "spacing": 5,
+       "padding": [
+        10,
+        10,
+        10,
+        10
+       ],
+       "childAlignment": "UpperCenter",
+       "resizeMode": "ControlSize"
+      }
+     }
+    ],
+    "children": []
+   }
+  ]
+ },
+ "unmapped": [
+  {
+   "node": "sample_min_root",
+   "component": "cc.Graphics",
+   "reason": "样例占位：矢量绘制无 UGUI 等价（演示 unmapped 字段）"
+  }
+ ]
+}

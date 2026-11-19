@@ -1,0 +1,23 @@
+# Node
+node_modules/
+*.log
+.tmp-*
+
+# 本地自备面板数据（版权原因不入库）
+ir/
+build/
+build-raw/
+sidecars/
+bench/
+build-pilot/
+
+# Unity 生成物
+unity/Library/
+unity/Logs/
+unity/obj/
+unity/*.csproj
+unity/*.sln
+unity/UserSettings/
+Reports*/
+captures/
+*.unitypackage

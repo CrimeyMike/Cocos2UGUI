@@ -1,0 +1,176 @@
+{
+ "meta": {
+  "bundle": "testsyn",
+  "source": "testsyn/000/res/import/00/fixture.json",
+  "sourceAbs": "C:\\gamecaches\\testsyn\\000\\res\\import\\00\\fixture.json",
+  "sourceUuid": "fixture000",
+  "prefabName": "synthetic",
+  "sectionIndex": 0,
+  "designResolution": { "width": 750, "height": 1334 },
+  "stats": { "nodes": 11, "components": { "cc.UITransform": 11 }, "customScripts": {}, "spriteRefs": 0, "spriteResolved": 0, "nestedPrefabs": 0, "overridesApplied": 0, "unresolvedInstanceRefs": 0 },
+  "warnings": []
+ },
+ "assets": [],
+ "nodes": [
+  {
+   "name": "synthetic",
+   "active": true,
+   "layer": 33554432,
+   "fileId": "root000",
+   "mountedFrom": null,
+   "components": [
+    { "type": "cc.UITransform", "fileId": "u0", "props": { "_contentSize": { "__type__": "cc.Size", "width": 750, "height": 1334 } } }
+   ],
+   "customScripts": [],
+   "children": [
+    {
+     "name": "nd_center_h",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 37, "y": 50, "z": 0 },
+     "fileId": "f1",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u1", "props": { "_contentSize": { "__type__": "cc.Size", "width": 200, "height": 60 } } },
+      { "type": "cc.Widget", "fileId": "w1", "props": { "_alignFlags": 16 } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_center_v",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 37, "y": 50, "z": 0 },
+     "fileId": "f2",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u2", "props": { "_contentSize": { "__type__": "cc.Size", "width": 200, "height": 60 } } },
+      { "type": "cc.Widget", "fileId": "w2", "props": { "_alignFlags": 2 } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_topleft",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 0, "y": 0, "z": 0 },
+     "fileId": "f3",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u3", "props": { "_contentSize": { "__type__": "cc.Size", "width": 100, "height": 50 } } },
+      { "type": "cc.Widget", "fileId": "w3", "props": { "_alignFlags": 9, "_top": 10, "_left": 20 } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_bottom_right",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 0, "y": 0, "z": 0 },
+     "fileId": "f4",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u4", "props": { "_contentSize": { "__type__": "cc.Size", "width": 100, "height": 50 } } },
+      { "type": "cc.Widget", "fileId": "w4", "props": { "_alignFlags": 36, "_bottom": 30, "_right": 40 } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_pct_top",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 0, "y": 0, "z": 0 },
+     "fileId": "f5",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u5", "props": { "_contentSize": { "__type__": "cc.Size", "width": 80, "height": 60 } } },
+      { "type": "cc.Widget", "fileId": "w5", "props": { "_alignFlags": 1, "_top": 0.25, "_isAbsTop": false } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_opacity",
+     "active": true,
+     "layer": 33554432,
+     "fileId": "f6",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u6", "props": { "_contentSize": { "__type__": "cc.Size", "width": 50, "height": 50 } } },
+      { "type": "cc.UIOpacity", "fileId": "o6", "props": { "_opacity": 128 } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_rot_scale",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 0, "y": 0, "z": 0 },
+     "rotation": { "__type__": "cc.Quat", "x": 0, "y": 0, "z": 0.3826834323650898, "w": 0.9238795325112867 },
+     "scale": { "__type__": "cc.Vec3", "x": 2, "y": 0.5, "z": 1 },
+     "fileId": "f7",
+     "mountedFrom": null,
+     "components": [
+      { "type": "cc.UITransform", "fileId": "u7", "props": { "_contentSize": { "__type__": "cc.Size", "width": 50, "height": 50 } } }
+     ],
+     "customScripts": [],
+     "children": []
+    },
+    {
+     "name": "nd_anchor_parent",
+     "active": true,
+     "layer": 33554432,
+     "position": { "__type__": "cc.Vec3", "x": 0, "y": 0, "z": 0 },
+     "fileId": "f8",
+     "mountedFrom": null,
+     "components": [
+      {
+       "type": "cc.UITransform",
+       "fileId": "u8",
+       "props": {
+        "_contentSize": { "__type__": "cc.Size", "width": 400, "height": 200 },
+        "_anchorPoint": { "__type__": "cc.Vec2", "x": 0, "y": 0.5 }
+       }
+      }
+     ],
+     "customScripts": [],
+     "children": [
+      {
+       "name": "nd_child_plain",
+       "active": true,
+       "layer": 33554432,
+       "position": { "__type__": "cc.Vec3", "x": 30, "y": -10, "z": 0 },
+       "fileId": "f9",
+       "mountedFrom": null,
+       "components": [
+        { "type": "cc.UITransform", "fileId": "u9", "props": { "_contentSize": { "__type__": "cc.Size", "width": 50, "height": 50 } } }
+       ],
+       "customScripts": [],
+       "children": []
+      },
+      {
+       "name": "nd_child_centerH",
+       "active": true,
+       "layer": 33554432,
+       "position": { "__type__": "cc.Vec3", "x": 30, "y": -10, "z": 0 },
+       "fileId": "f10",
+       "mountedFrom": null,
+       "components": [
+        { "type": "cc.UITransform", "fileId": "u10", "props": { "_contentSize": { "__type__": "cc.Size", "width": 50, "height": 50 } } },
+        { "type": "cc.Widget", "fileId": "w10", "props": { "_alignFlags": 16 } }
+       ],
+       "customScripts": [],
+       "children": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "unresolved": []
+}
