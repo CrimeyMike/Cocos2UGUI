@@ -126,8 +126,8 @@ const INSET_LEFT = 0; const INSET_TOP = 1; const INSET_RIGHT = 2; const INSET_BO
 border = [ capInsets[0], capInsets[3], capInsets[2], capInsets[1] ]   // [L,T,R,B] → [L,B,R,T]
 capInsets 全 0 → border = null(非九宫格)
 ```
-**旁证**: battle `zd_zk_line_sj`(22×18 横线) capInsets `[11,0,8,0]` → 上下 inset=0, 正是"仅横向拉伸的分割线"; home `jjc_di_green`(50×40) `[21,0,21,0]` 同型。若按 Rect(x,y,w,h) 语义解读会出现 18px 的假"下边", 与图形明显不符。
-**golden**(t4): `sprite_nine [30,30,30,30]→[30,30,30,30]`(guide `_nd:bg` 九宫格背景); `common_card_sl [22,7,17,8]→[22,8,17,7]`; `card_di [14,16,14,16]→[14,16,14,16]`; 全 0 → null。
+**旁证**: battle `zd_zk_line_sj`(22×18 横线) capInsets `[11,0,8,0]` → 上下 inset=0, 正是"仅横向拉伸的分割线"; home `rank_di_green`(50×40) `[21,0,21,0]` 同型。若按 Rect(x,y,w,h) 语义解读会出现 18px 的假"下边", 与图形明显不符。
+**golden**(t4): `sprite_nine [30,30,30,30]→[30,30,30,30]`(guide `_nd:bg` 九宫格背景); `sprite_card_sl [22,7,17,8]→[22,8,17,7]`; `sprite_card_di [14,16,14,16]→[14,16,14,16]`; 全 0 → null。
 
 `Sprite._type → Image.imageType`: 0=simple(缺省)→`Simple`, 1=sliced→`Sliced`, 2=tiled→`Tiled`, 3=filled→`Filled`(语料仅出现 0/1)。实证: guide `_nd:bg` `_type:1`→Sliced; guide `_spr:speaker` 无 `_type`→Simple。
 
@@ -142,7 +142,7 @@ capInsets 全 0 → border = null(非九宫格)
 
 ## 7. rotated 切图策略
 
-`sprites[].rotated` 与 `rect` **原样透传, 不交换 w/h**(BUILD-SCHEMA: rect 为 Cocos 坐标系切图)。Unity Sprite 无法表达"图集内旋转 90°", **P4 裁剪时负责逆旋转**: 从源图按 rect 取出区域后旋转 90° 落成独立 Sprite(Unity `CopyTexture`/`Graphics.Blit` 或生成中间图集)。golden(t6): battle `main_graph_small_01 {714,882,126,30}`、`zd_zk_line_sj`、`zd_light`、`zd_icon_vs`、`zd_sl_icon__ls` 共 5 张 rotated 切图 rect 原样; 4 个节点(红/蓝侧各 2)共用 `main_graph_small_01` 且 sprites[] 去重为 1 条。
+`sprites[].rotated` 与 `rect` **原样透传, 不交换 w/h**(BUILD-SCHEMA: rect 为 Cocos 坐标系切图)。Unity Sprite 无法表达"图集内旋转 90°", **P4 裁剪时负责逆旋转**: 从源图按 rect 取出区域后旋转 90° 落成独立 Sprite(Unity `CopyTexture`/`Graphics.Blit` 或生成中间图集)。golden(t6): battle `atlas_region_small_01 {714,882,126,30}`、`zd_zk_line_sj`、`zd_light`、`game_icon_vs`、`zd_sl_icon__ls` 共 5 张 rotated 切图 rect 原样; 4 个节点(红/蓝侧各 2)共用 `atlas_region_small_01` 且 sprites[] 去重为 1 条。
 
 ## 8. `cc.Label → Text`(全量 2731)
 

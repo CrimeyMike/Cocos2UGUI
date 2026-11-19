@@ -12,11 +12,11 @@ const home = loadBuild('demo-demo_rank_reward');
 
 // border 直存换序
 deepEqual(sprite(guide, 'sprite_nine').border, [30, 30, 30, 30], 'sprite_nine capInsets[30,30,30,30] → [L,B,R,T]=[30,30,30,30]');
-deepEqual(sprite(home, 'common_card_sl').border, [22, 8, 17, 7], 'common_card_sl capInsets[22,7,17,8]=[L,T,R,B] → [L,B,R,T]=[22,8,17,7]');
-deepEqual(sprite(home, 'jjc_di_green').border, [21, 0, 21, 0], 'jjc_di_green [21,0,21,0] → 横向拉伸条');
+deepEqual(sprite(home, 'sprite_card_sl').border, [22, 8, 17, 7], 'sprite_card_sl capInsets[22,7,17,8]=[L,T,R,B] → [L,B,R,T]=[22,8,17,7]');
+deepEqual(sprite(home, 'rank_di_green').border, [21, 0, 21, 0], 'rank_di_green [21,0,21,0] → 横向拉伸条');
 deepEqual(sprite(guide, 'sprite_bg').border, null, 'sprite_bg capInsets 全 0 → border null(非九宫格)');
-deepEqual(sprite(home, 'card_di').border, [14, 16, 14, 16], 'card_di [14,16,14,16]');
-deepEqual(sprite(home, 'jjc_di_black_01').border, [15, 15, 15, 15], 'jjc_di_black_01 [15,15,15,15]');
+deepEqual(sprite(home, 'sprite_card_di').border, [14, 16, 14, 16], 'sprite_card_di [14,16,14,16]');
+deepEqual(sprite(home, 'rank_di_black_01').border, [15, 15, 15, 15], 'rank_di_black_01 [15,15,15,15]');
 
 // Sprite._type: 0=simple(缺省) 1=sliced
 {
