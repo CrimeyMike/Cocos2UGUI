@@ -29,13 +29,13 @@ const battle = loadBuild('demo-ui-demo_statistic_view');
 }
 // battle _lab:red_name: _lineHeight 30 / 28 = 1.0714; _color (255,111,111,255)
 {
-  const t = comp(findNode(battle.root, 'zd_graph_red', '_lab:red_name'), 'Text').props;
+  const t = comp(findNode(battle.root, 'game_graph_red', '_lab:red_name'), 'Text').props;
   near(t.lineSpacing, 1.0714, '30/28');
   near(t.color, [1, 0.4353, 0.4353, 1], 'rgba');
 }
 // battle _lab:red_trophy: 23/20 = 1.15
 {
-  const t = comp(findNode(battle.root, 'zd_graph_red', '_lab:red_trophy'), 'Text').props;
+  const t = comp(findNode(battle.root, 'game_graph_red', '_lab:red_trophy'), 'Text').props;
   near(t.lineSpacing, 1.15, '23/20');
 }
 // home _lab:lock: _overflow 2 = SHRINK → "Shrink"
@@ -85,7 +85,7 @@ assert.ok(guide.unmapped.some(u => u.component === 'cc.Label._font' && u.reason.
 }
 // battle _nd:red_card_layer: _layoutType 1(水平) _spacingX 11 → Horizontal/spacing 11
 {
-  const l = comp(findNode(battle.root, 'zd_graph_red', '_nd:red_card_layer'), 'Layout').props;
+  const l = comp(findNode(battle.root, 'game_graph_red', '_nd:red_card_layer'), 'Layout').props;
   assert.equal(l.layoutType, 'Horizontal');
   assert.equal(l.spacing, 11, '_spacingX');
   assert.equal(l.resizeMode, 'Container');

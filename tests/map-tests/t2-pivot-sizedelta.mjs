@@ -39,11 +39,11 @@ const battle = loadBuild('demo-ui-demo_statistic_view');
 }
 // battle _lab:red_name: _anchorPoint (0,0.5); battle item_card spine 节点小数锚点保 4 位
 {
-  const n = findNode(battle.root, 'zd_graph_red', '_lab:red_name');
+  const n = findNode(battle.root, 'game_graph_red', '_lab:red_name');
   deepEqual(n.rect.pivot, [0, 0.5], '_lab:red_name pivot');
 }
 {
-  const n = findNode(battle.root, 'zd_graph_red', '_nd:red_card_layer', 'item_card', '_spine:orange_spine_1');
+  const n = findNode(battle.root, 'game_graph_red', '_nd:red_card_layer', 'item_card', '_spine:orange_spine_1');
   deepEqual(n.rect.pivot, [0.5432, 0.0012], 'spine pivot 四舍五入到 4 位');
   near(n.rect.sizeDelta[0], 119.8738, 'spine sizeDelta.w');
   near(n.rect.sizeDelta[1], 154.677, 'spine sizeDelta.h');

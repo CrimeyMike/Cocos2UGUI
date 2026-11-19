@@ -2,7 +2,7 @@
 // 引擎实证(cocos-engine v3.8.8 cocos/2d/assets/sprite-frame.ts):
 //   _capInsets 不是 Rect 而是数组 [INSET_LEFT=0, INSET_TOP=1, INSET_RIGHT=2, INSET_BOTTOM=3]
 //   → Unity border(BUILD-SCHEMA 定义 [L,B,R,T]) = [c[0], c[3], c[2], c[1]]; 全 0 → null。
-// 旁证: battle zd_zk_line_sj(22×18 横线) capInsets [11,0,8,0] → 上下 inset 为 0,
+// 旁证: battle game_zk_line_sj(22×18 横线) capInsets [11,0,8,0] → 上下 inset 为 0,
 //       正是"只横向拉伸的横线", 与数组直存语义吻合(Rect 解读则会出现 18px 假下边)。
 import { loadBuild, findNode, sprite, deepEqual } from './lib.mjs';
 import assert from 'node:assert/strict';
@@ -30,7 +30,7 @@ deepEqual(sprite(home, 'rank_di_black_01').border, [15, 15, 15, 15], 'rank_di_bl
 }
 {
   const img = findNode(home.root, '_nd:rank_name').components.find(c => c.type === 'Image');
-  assert.equal(img.props.imageType, 'Simple', 'jjc_top_yellow 无 _type → Simple');
+  assert.equal(img.props.imageType, 'Simple', 'rank_top_yellow 无 _type → Simple');
 }
 {
   const img = findNode(home.root, '_scroll:content', 'view', '_nd:content').components.find(c => c.type === 'Image');

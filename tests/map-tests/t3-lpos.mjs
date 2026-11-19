@@ -26,7 +26,7 @@ const battle = loadBuild('demo-ui-demo_statistic_view');
 //   offsetMin = (43.12-77, -2.448-112) = (-33.88, -114.448)   [相对父左锚点参考系]
 //   offsetMax = (120.12, 109.552)
 {
-  const n = findNode(battle.root, 'zd_graph_red', '_nd:red_card_layer', 'item_card');
+  const n = findNode(battle.root, 'game_graph_red', '_nd:red_card_layer', 'item_card');
   near(n.rect.anchoredPosition, [43.12, -2.448], 'item_card anchoredPosition == lpos');
   near(n.rect.anchorMin, [0, 0.5], 'item_card 锚点=父锚点');
   near(n.rect.offsetMin, [-33.88, -114.448], 'item_card offsetMin');
@@ -37,7 +37,7 @@ const battle = loadBuild('demo-ui-demo_statistic_view');
 //   offsetMin = (-183.285 - 0*109.096, 119.652 - 0.5*43.8) = (-183.285, 97.752)
 //   offsetMax = (-74.189, 141.552); anchoredPosition == lpos
 {
-  const n = findNode(battle.root, 'zd_graph_red', '_lab:red_name');
+  const n = findNode(battle.root, 'game_graph_red', '_lab:red_name');
   near(n.rect.anchoredPosition, [-183.285, 119.652], '_lab:red_name ap == lpos');
   near(n.rect.offsetMin, [-183.285, 97.752], '_lab:red_name offsetMin');
   near(n.rect.offsetMax, [-74.189, 141.552], '_lab:red_name offsetMax');
